@@ -14,7 +14,7 @@ We tell our story through a user called Lara, who is an event planner from Brita
 
 The first point of the story is that during Lara's travels she has planned a meeting at a Cafe that's outdoors without a suitable indoors area. However, during this time, a thunderstorm is heading towards Berlin. We want to alert Lara that her important team meeting could be affected by this change of weather and to give her additional options for another place to meet. 
 
-![itinerary](itinerary1-small.png)
+![itinerary](images/itinerary1-small.png)
 
 When a traveler adds an event to their itinerary, the Travel and Transportation app registers for weather updates in that geography. We used the [Weather Underground API](http://www.wunderground.com/weather/api/) for getting us real-time data about the weather patterns at the time that the event occurs. Unfortunately, Yelp and Google Places API does not provide information about whether a venue is outdoors or indoors, so we had to augment this information manually in order for this example to work. We built our system to recognize certain rules such as if thunderstorms are happening during the time of the event, flag events that are outdoors like going on a hike in the country. We have considered additional rules such as during snowy conditions, recommend not traveling by car but recommend skiing for example.
 
@@ -25,7 +25,7 @@ When Lara is alerted about an inclement weather warning at Pfau Cafe, we wanted 
 First, we use Lara's [LinkedIn](https://developer.linkedin.com/) profile and the words used in the profile to create input data for [Watson Personality Insights](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html). We could also use words written by the user on Twitter, Facebook, or other social media for getting some data about the traveler's personality. Personality Insights works best if you can supply over 3500 words as input. The result is a psychological inventory for the user. The "Big Five" personality traits in the model are Agreeableness, Conscientiousness, Extraversion, Emotional Range, Openness. However, under each top-level dimension there are six subdimensions. 
 
 
-![personality](personalityinsights.png)
+![personality](images/personalityinsights.png)
 
 We selected Outgoingness, Intellect, Adventurousness, and Risk-taking for creating our feature vector since those features seemed most relevant for recommended points of interests. 
 
