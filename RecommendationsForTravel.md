@@ -12,7 +12,7 @@ We tell our story through a user called Lara, who is an event planner from Stutt
 
 Before Lara began her trip to Berlin, she had arranged a series of meetings with her team. One of the meetings what scheduled for Pfau Cafe, which is a scenic beer garden outdoors, however does not have an indoor area. The morning of her meeting, she discovers that a thunderstorm is heading towards Berlin. We want to alert Lara that her important team meeting could be affected by this change of weather and to give her additional options for another place to meet. 
 
-![itinerary](images/itinerary1-small.png)
+![itinerary](images/inclementweather.png)
 
 When a traveler adds an event to her itinerary, the Travel and Transportation app registers for weather updates in that region. We used the [Weather Underground API](http://www.wunderground.com/weather/api/) for getting us real-time data about the weather patterns at the time that the event occurs. Unfortunately, Yelp and Google Places API does not provide information about whether a venue is outdoors or indoors, so we had to augment this information in order for this example to work. We built our system to recognize certain rules such as if thunderstorms are happening during the time of the event, flag events that are outdoors like going on a hike in the country. We have considered additional rules such as during snowy conditions, recommend not traveling by car but recommend skiing for example.
 
@@ -29,19 +29,38 @@ We selected Outgoingness, Intellect, Adventurousness, and Risk-taking for creati
 
 $$ \textbf{t} = [0.44, 0.96, 0.90, 0.03]^T $$
 
-Each point of interest is also evaluated based on the aggregate reviews for that point of interest from [Yelp's API](https://www.yelp.com/developers/documentation/v2/search_api). Each user, therefore has a distance between their feature vector and the point of interest's feature vector **p** Therefore, the distance between the traveler's personality and the reviews for the point of interest is:
+Next, we form a personality profile for a point of interest (POI). We aggregated the reviews for a given point of interest using [Yelp's API](https://www.yelp.com/developers/documentation/v2/search_api). Each of these POIs, then have their own respective personality vector. 
+
+The evaluate a match, we operate of the assumption that there is a distance between the user's personality vector ***t*** and the point of interest's personality vector **p** Therefore, the distance between the traveler's personality and the reviews for the point of interest is simply the norm:
 
 $$ \|| \mathbf{p} - \mathbf{t} \|| $$
 
 
-We then use k-nearest neighbors (kNN) approach in order to cluster similar points of interest into similar categories. 
+```javascript
+
+function distance(a, b) {
+// code here
+}
+
+```
+
+We then use k-nearest neighbors (kNN) approach in order to cluster similar points of interest into similar categories. For all of these distances, we sort them in ascending order. Therefore, for matching a particular user to a POI operates in O(n log n) time. 
 
 ```
 code for kNN here
 
 ```
 
-visualization of the clusters
+(show interactive visualization of the clusters)
+
+We finally show the sorted list of recommendations to the user:
+
+![recommendations](images/recommendations2.png)
+
+Lara in this case has chosen Ristorante La Tettoia. This is where our app automatically provides recommendations for travel options that will get her from Volkspark Humboltthain to Walderstrasse in time to make her next meeting.
 
 ## Recommending Transportation options
 
+Our database contains a list of possible routes, for each we consider the duration of trip, number of legs, price, preferred departure time, and proximity to current location.  
+
+![recommendations](images/transportation.png)
