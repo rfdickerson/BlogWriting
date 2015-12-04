@@ -61,6 +61,18 @@ Lara in this case has chosen Ristorante La Tettoia. This is where our app automa
 
 ## Recommending Transportation options
 
-Our database contains a list of possible routes, for each we consider the duration of trip, number of legs, price, preferred departure time, and proximity to current location.  
+Our database contains a list of possible routes, for each we consider the duration of trip, number of legs, price, preferred departure time, and proximity to current location. We used the [Watson Tradeoff Analytics API](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tradeoff-analytics.html) in order to find the most optimized combination of these factors.
+
+Tradeoff analytics uses a Pareto optimal tradeoff engine to help select the best option. 
+
+- All of the dominant option's values are at least as good as the other option's values.
+- At least one of the dominant option's values is strictly better than the corresponding value of the other option.
+
 
 ![recommendations](images/transportation.png)
+
+
+## References
+
+- [Science behind the Tradeoff analytics service](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/tradeoff-analytics/science.shtml)
+- [k-Nearest Neighbor algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)
