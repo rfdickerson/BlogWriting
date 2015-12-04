@@ -68,6 +68,7 @@ Tradeoff analytics uses a Pareto optimal tradeoff engine to help select the best
 - All of the dominant option's values are at least as good as the other option's values.
 - At least one of the dominant option's values is strictly better than the corresponding value of the other option.
 
+*** Show visualization of Pareto frontier here ***
 
 ![recommendations](images/transportation.png)
 
