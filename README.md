@@ -1,1 +1,1 @@
-# TravelRecommendationBlogArticle
+# Blog writing
